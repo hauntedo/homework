@@ -1,6 +1,7 @@
 package darthrusya.FileManager;
 
-import ru.kpfu.itis.FileManager.Commands.CommandProccesor;
+import darthrusya.FileManager.Commands.CommandProccesor;
+
 import java.io.IOException;
 
 public class FileManager {

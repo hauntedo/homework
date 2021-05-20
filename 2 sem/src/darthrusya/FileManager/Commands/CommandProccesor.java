@@ -43,7 +43,7 @@ public class CommandProccesor {
                     result = com.get(m.group(1)).execute(this.currentFile);
                 }
             } catch(Exception ex) {
-                System.out.println("Not found match");;
+                System.out.println("Not found match");
             }
         }
 
