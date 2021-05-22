@@ -5,7 +5,6 @@ import com.google.gson.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Map;
@@ -14,8 +13,8 @@ import java.util.TreeMap;
 
 public class WeatherForecast {
 
-    public static final String locationSearchURL = "https://www.metaweather.com/api/location/search/?query=";
-    public static final String locationIdURL = "https://www.metaweather.com/api/location/";
+    public static final String LOCATION_SEARCH_URL = "https://www.metaweather.com/api/location/search/?query=";
+    public static final String LOCATION_ID_URL = "https://www.metaweather.com/api/location/";
 
 
     public Scanner sc;
@@ -62,7 +61,7 @@ public class WeatherForecast {
     }
 
     public void identifyID(String s) throws IOException {
-        JsonArray data = gson.fromJson(String.valueOf(getLocationInfo(s, locationSearchURL)), JsonArray.class);
+        JsonArray data = gson.fromJson(String.valueOf(getLocationInfo(s, LOCATION_SEARCH_URL)), JsonArray.class);
         for(JsonElement cityItem : data) {
             JsonObject cityItemObj = cityItem.getAsJsonObject();
             this.idList.put(cityItemObj.get("woeid").getAsString(), cityItemObj.get("title").getAsString());
@@ -72,7 +71,7 @@ public class WeatherForecast {
     public void getLocationWeather(String s) throws IOException {
         for (Map.Entry<String, String> pair : this.idList.entrySet()) {
             if (pair.getValue().toLowerCase().equals(s.toLowerCase())) {
-                JsonObject data = gson.fromJson(getLocationInfo(pair.getKey().toLowerCase(), locationIdURL), JsonObject.class);
+                JsonObject data = gson.fromJson(getLocationInfo(pair.getKey().toLowerCase(), LOCATION_ID_URL), JsonObject.class);
                 JsonArray weatherData = data.getAsJsonArray("consolidated_weather");
                 System.out.println(pair.getValue());
                 for(JsonElement weatherItem : weatherData) {
