@@ -1,11 +1,11 @@
-import darthrusya.WeatherInformer.WeatherForecast;
+import darthrusya.CocktailDB.Cocktail;
 
 import java.io.IOException;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        WeatherForecast wf = new WeatherForecast();
-        wf.execute();
+        Cocktail c = new Cocktail();
+        c.execute();
     }
 }
