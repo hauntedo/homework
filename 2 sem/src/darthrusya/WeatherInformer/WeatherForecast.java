@@ -5,13 +5,14 @@ import com.google.gson.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
 
-public class WeatherForecast {
+public class WeatherForecast implements Serializable {
 
     public static final String LOCATION_SEARCH_URL = "https://www.metaweather.com/api/location/search/?query=";
     public static final String LOCATION_ID_URL = "https://www.metaweather.com/api/location/";
